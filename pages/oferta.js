@@ -31,7 +31,7 @@ const Oferta = () => {
         <div className="flex flex-grow">
           <Sidebar show={showSidebar || toggleSidebar} toggleSidebar={() => setToggleSidebar(!toggleSidebar)} />
           <div className="flex flex-col flex-grow">
-            <TopBar toggleSidebar={() => setToggleSidebar(!toggleSidebar)}/>
+            <TopBar toggleSidebar={() => setToggleSidebar(!toggleSidebar)} toggled={toggleSidebar} />
             <div id="content" className="container mx-auto bg-green-600 flex-grow">
               <h2> Content</h2>
             </div>
