@@ -1,9 +1,19 @@
 {
     "emmet.excludeLanguages": [
-    
         "markdown"
     ],
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
-    }
+    },
+    "editor.tabSize": 2,
+    "css.validate": false,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.colorDecorators": "on",
+    "tailwindCSS.validate": true
 }
