@@ -98,7 +98,7 @@ const Oferta = () => {
             </div>
           </div>
         </div>
-        <div className="h-8">
+        <div id="footer-wrapper" className="flex flex-grow justify-center bg-black text-gray-400 hover:text-white">
           <Footer />
         </div>
       </div>
