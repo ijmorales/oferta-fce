@@ -33,16 +33,17 @@ const Sidebar = ({ show, toggleSidebar }) => {
             </Link>
           </li>
           <li className="group hover:bg-white hover:border-black text-center">
-            <a
-              href="#"
-              className="group-hover:text-black flex align-middle p-4"
-            >
-              <HiOutlineStar className="h-6 w-6 mr-6" />
-              <p className="font-bold truncate">Favoritos</p>
-            </a>
+            <Link href="/favoritos">
+              <a
+                className="group-hover:text-black flex align-middle p-4"
+              >
+                <HiOutlineStar className="h-6 w-6 mr-6" />
+                <p className="font-bold truncate">Favoritos</p>
+              </a>
+            </Link>
           </li>
           <li className="group hover:bg-white hover:border-black text-center">
-            <Link href="about">
+            <Link href="/about">
               <a className="group-hover:text-black flex align-middle p-4">
                 <HiOutlineInformationCircle className="h-6 w-6 mr-6" />
                 <p className="font-bold">Acerca de</p>

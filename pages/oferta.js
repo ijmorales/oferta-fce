@@ -1,7 +1,7 @@
 import Layout from './layout/Layout'
 import CursosTable from './components/CursosTable'
 
-const Oferta = () => {
+const OfertaPage = () => {
   return (
     <Layout>
       <div className="p-4 shadow-lg rounded">
@@ -184,4 +184,4 @@ const Oferta = () => {
   )
 }
 
-export default Oferta
+export default OfertaPage

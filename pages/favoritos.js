@@ -1,13 +1,13 @@
 import Layout from './layout/Layout'
 
-const AboutPage = () => {
+const FavoritosPage = () => {
   return (
     <Layout>
       <h1 className="font-extrabold">
-        Acerca de
+        Favoritos
       </h1>
     </Layout>
   )
 }
 
-export default AboutPage
+export default FavoritosPage
