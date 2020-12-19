@@ -5,9 +5,9 @@ const Sidebar = ({ show, toggleSidebar }) => {
   return (
     <>
       <nav id="sidebar" className={
-        show 
-        ? 'bg-opacity-95 bg-gray-700 w-screen h-screen fixed text-white flex flex-col lg:w-44 lg:relative lg:opacity-100 lg:h-auto'
-        : 'hidden'
+        show
+          ? 'bg-opacity-95 bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:opacity-100 lg:h-auto'
+          : 'hidden'
       }>
         <div id="close-button" className="lg:hidden flex justify-start h-20">
           <button onClick={toggleSidebar} className="p-4">
