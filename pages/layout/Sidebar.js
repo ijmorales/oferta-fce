@@ -14,7 +14,7 @@ const Sidebar = ({ show, toggleSidebar }) => {
         id="sidebar"
         className={
           show
-            ? 'bg-opacity-95 bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:opacity-100 lg:h-auto'
+            ? 'bg-opacity-95 bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:opacity-100 lg:h-auto justify-between'
             : 'hidden'
         }
       >
@@ -23,11 +23,11 @@ const Sidebar = ({ show, toggleSidebar }) => {
             <HiOutlineX className="w-10 h-10" />
           </button>
         </div>
-        <ul className="flex flex-col my-auto">
+        <ul className="flex flex-col lg:my-auto">
           <li className="group hover:bg-white hover:border-black text-center">
             <Link href="/oferta">
               <a className="group-hover:text-black flex align-middle p-4">
-                <HiOutlineHome className="h-6 w-6 mr-6" />
+                <HiOutlineHome className="h-6 w-6 mr-4" />
                 <p className="font-bold">Home</p>
               </a>
             </Link>
@@ -37,7 +37,7 @@ const Sidebar = ({ show, toggleSidebar }) => {
               <a
                 className="group-hover:text-black flex align-middle p-4"
               >
-                <HiOutlineStar className="h-6 w-6 mr-6" />
+                <HiOutlineStar className="h-6 w-6 mr-4" />
                 <p className="font-bold truncate">Favoritos</p>
               </a>
             </Link>
@@ -45,12 +45,15 @@ const Sidebar = ({ show, toggleSidebar }) => {
           <li className="group hover:bg-white hover:border-black text-center">
             <Link href="/about">
               <a className="group-hover:text-black flex align-middle p-4">
-                <HiOutlineInformationCircle className="h-6 w-6 mr-6" />
+                <HiOutlineInformationCircle className="h-6 w-6 mr-4" />
                 <p className="font-bold">Acerca de</p>
               </a>
             </Link>
           </li>
         </ul>
+        <div id="wrapper" className="h-20 invisible">
+
+        </div>
       </nav>
     </>
   )
