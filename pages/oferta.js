@@ -1,7 +1,11 @@
-import Layout from './layout/Layout'
-import CursosTable from './components/CursosTable'
+import Layout from '../components/layout/Layout'
 import fs from 'fs'
+import dynamic from 'next/dynamic'
 
+const CursosTable = dynamic(
+  () => import('../components/CursosTable'),
+  { ssr: false }
+)
 export default function Oferta ({ oferta }) {
   return (
     <Layout>
@@ -14,9 +18,7 @@ export default function Oferta ({ oferta }) {
 }
 
 export async function getStaticProps (context) {
-  console.log(process.cwd())
   const oferta = JSON.parse(fs.readFileSync('oferta.example.json', 'utf8'))
-  console.log(oferta)
   return {
     props: {
       oferta
