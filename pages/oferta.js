@@ -4,8 +4,9 @@ import dynamic from 'next/dynamic'
 
 const CursosTable = dynamic(
   () => import('../components/CursosTable'),
-  { ssr: false }
+  { ssr: true }
 )
+
 export default function Oferta ({ oferta }) {
   return (
     <Layout>
