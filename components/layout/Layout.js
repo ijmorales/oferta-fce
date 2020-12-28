@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
             <div id="content-wrapper" className="overflow-y-auto">
               <div
                 id="content"
-                className="container mx-auto pt-4 flex flex-col"
+                className={toggleSidebar ? 'hidden' : 'container mx-auto pt-4 flex flex-col'}
               >
                 {children}
               </div>

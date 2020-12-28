@@ -14,16 +14,16 @@ const Sidebar = ({ show, toggleSidebar }) => {
         id="sidebar"
         className={
           show
-            ? 'bg-opacity-95 bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:opacity-100 lg:h-auto justify-between'
+            ? 'bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:h-auto justify-between'
             : 'hidden'
         }
       >
-        <div id="close-button" className="lg:hidden flex justify-start h-20">
+        <div id="close-button" className="lg:hidden flex justify-end h-20">
           <button onClick={toggleSidebar} className="p-4">
             <HiOutlineX className="w-10 h-10" />
           </button>
         </div>
-        <ul className="flex flex-col lg:my-auto">
+        <ul className="flex flex-col lg:my-auto justify-end">
           <li className="group hover:bg-white hover:border-black text-center">
             <Link href="/oferta">
               <a className="group-hover:text-black flex align-middle p-4">
