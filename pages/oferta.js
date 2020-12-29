@@ -15,7 +15,7 @@ export default function Oferta ({ oferta }) {
 }
 
 export async function getStaticProps (context) {
-  const oferta = JSON.parse(fs.readFileSync('oferta.example.json', 'utf8'))
+  const oferta = JSON.parse(fs.readFileSync('data/oferta.example.json', 'utf8'))
   return {
     props: {
       oferta

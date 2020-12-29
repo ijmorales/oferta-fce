@@ -24,7 +24,7 @@ export default function CursosTable ({ data }) {
       data={data}
     >
       <DataTable
-        keyField="curso"
+        keyField="id"
         responsive={true}
         expandableRows
         expandableRowsComponent={<DetalleCurso />}
