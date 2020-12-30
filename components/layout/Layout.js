@@ -1,27 +1,26 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
 import TopBar from './TopBar'
+import Content from './Content'
 import { screens } from '../../helpers/breakpoints'
 
-const Layout = ({ children }) => {
-  const [showSidebar, setShowSidebar] = useState(false)
-  const [toggleSidebar, setToggleSidebar] = useState(false)
+export default function Layout ({ children }) {
+  const [dimensions, setDimensions] = useState({})
+  const [sidebarToggled, setSidebarToggled] = useState(false)
+  const sidebarCollapsed = dimensions.width < screens.lg
 
-  // En pantallas grandes, la sidebar se muestra por defecto, en pantallas chicas se muestra solo si el usuario lo pide
   useEffect(() => {
-    const handleResize = () => {
-      console.log('handleResize', window.innerWidth, screens.lg)
-      const toggleByWidth = window.innerWidth >= screens.lg
-      if (toggleByWidth) {
-        setShowSidebar(true)
-      } else {
-        setShowSidebar(toggleSidebar)
-      }
+    function handleResize () {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
     }
-    console.log('useEffect')
-    handleResize()
     window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
@@ -29,22 +28,22 @@ const Layout = ({ children }) => {
       <div className="flex flex-col h-screen">
         <div className="flex flex-grow flex-1 overflow-y-auto">
           <Sidebar
-            show={showSidebar || toggleSidebar}
-            toggleSidebar={() => setToggleSidebar(!toggleSidebar)}
+            sidebarShow={
+              sidebarCollapsed === false ||
+              (sidebarCollapsed && sidebarToggled === true)
+            }
+            closeSidebar={() => setSidebarToggled(false)}
           />
           <div className="flex flex-col flex-grow overflow-y-auto">
             <TopBar
-              toggleSidebar={() => setToggleSidebar(!toggleSidebar)}
-              toggled={toggleSidebar}
+              sidebarCollapsed={sidebarCollapsed}
+              openSidebar={() => setSidebarToggled(true)}
             />
-            <div id="content-wrapper" className="overflow-y-auto">
-              <div
-                id="content"
-                className={toggleSidebar ? 'hidden' : 'container mx-auto pt-4 flex flex-col'}
-              >
-                {children}
-              </div>
-            </div>
+            <Content
+              show={!sidebarCollapsed || (sidebarCollapsed && !sidebarToggled)}
+            >
+              {children}
+            </Content>
           </div>
         </div>
         <div
@@ -58,4 +57,6 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout
+Layout.propTypes = {
+  children: PropTypes.object
+}

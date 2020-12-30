@@ -7,19 +7,22 @@ import {
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
-const Sidebar = ({ show, toggleSidebar }) => {
+const Sidebar = ({ sidebarShow, closeSidebar }) => {
   return (
     <>
       <nav
         id="sidebar"
         className={
-          show
+          sidebarShow
             ? 'bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:h-auto justify-between'
             : 'hidden'
         }
       >
-        <div id="close-button" className="lg:hidden flex justify-end h-20">
-          <button onClick={toggleSidebar} className="p-4">
+        <div
+          id="closeSidebar-button"
+          className="lg:hidden flex justify-end h-20"
+        >
+          <button onClick={closeSidebar} className="p-4">
             <HiOutlineX className="w-10 h-10" />
           </button>
         </div>
@@ -34,9 +37,7 @@ const Sidebar = ({ show, toggleSidebar }) => {
           </li>
           <li className="group hover:bg-white hover:border-black text-center">
             <Link href="/favoritos">
-              <a
-                className="group-hover:text-black flex align-middle p-4"
-              >
+              <a className="group-hover:text-black flex align-middle p-4">
                 <HiOutlineStar className="h-6 w-6 mr-4" />
                 <p className="font-bold truncate">Favoritos</p>
               </a>
@@ -51,17 +52,15 @@ const Sidebar = ({ show, toggleSidebar }) => {
             </Link>
           </li>
         </ul>
-        <div id="wrapper" className="h-20 invisible">
-
-        </div>
+        <div id="aligner" className="h-20 invisible"></div>
       </nav>
     </>
   )
 }
 
 Sidebar.propTypes = {
-  show: PropTypes.bool,
-  toggleSidebar: PropTypes.func
+  sidebarShow: PropTypes.bool,
+  closeSidebar: PropTypes.func
 }
 
 export default Sidebar
