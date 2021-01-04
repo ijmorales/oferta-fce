@@ -25,6 +25,7 @@ export default function Layout ({ children }) {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="flex flex-col h-screen">
         <div className="flex flex-grow flex-1 overflow-y-auto">
           <Sidebar
@@ -52,6 +53,10 @@ export default function Layout ({ children }) {
         >
           <Footer />
         </div>
+=======
+      <div className="container mx-auto">
+        {children}
+>>>>>>> b5737eb (Setup spacing, paleta de colores y delinee CursoCard)
       </div>
     </>
   )
