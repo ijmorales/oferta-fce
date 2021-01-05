@@ -1,6 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  corePlugins: {
+    container: false,
+  },
   purge: [
     './components/CursosTable.js',
     './components/layout/*.js',
@@ -17,9 +20,12 @@ module.exports = {
         'fce-orange': '#ffa455',
         'light-green': '#5de9a8',
         'war-blue': '#1f2937',
-        'light-gray': '#F4F7FC'
+        'light-gray': '#F4F7FC',
+        'strong-gray': '#707070'
       },
       spacing: {
+        '11.5': '2.875rem',
+        '17.5': '4.375rem',
         '59.5': '17.875rem',
         '93.5': '23.375rem'
       }
@@ -28,5 +34,29 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    ({ addComponents, theme }) => {
+      addComponents({
+        '.container': {
+          maxWidth: theme('screens.sm'),
+
+          '@screen sm': {
+            maxWidth: theme('screens.sm')
+          },
+          '@screen md': {
+            maxWidth: theme('screens.md')
+          },
+          '@screen lg': {
+            maxWidth: theme('screens.lg')
+          },
+          '@screen xl': {
+            maxWidth: theme('screens.xl')
+          },
+          '@screen 2xl': {
+            maxWidth: '1640px'
+          }
+        }
+      })
+    }
+  ]
 }
