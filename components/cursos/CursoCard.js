@@ -1,27 +1,37 @@
 import PropTypes from 'prop-types'
+import { FaUsers, FaStopwatch, FaCut } from 'react-icons/fa'
+import CursoTitle from './CursoTitle'
+import Stat from './Stat'
+import ScoreCircle from './ScoreCircle'
+import Card from '../Card'
 
 export default function CursoCard ({ curso }) {
   return (
-    <article className="bg-white lg:w-96 w-93.5 h-59.5 shadow-md rounded-lg p-5">
-      <div id="article-header">
-        <h2 className="text-war-blue uppercase">
-          { curso.materia }
-        </h2>
-        { curso.docente }
-        { curso.numero }
-        { curso.puntaje }
+    <Card>
+      <div id="article-header" className="flex justify-between">
+        <div className="flex flex-col">
+          <CursoTitle materia={curso.materia} docente={curso.docente} numero={curso.curso} />
+        </div>
+        <ScoreCircle score={curso.detalle.puntaje} />
       </div>
       <ul>
         { curso.horario.map((horario, index) => (
-          <li key={index}> {horario.dia}: {horario.hora} </li>
+          <li key={index} className="flex justify-between font-mono">
+            <span>
+              {horario.dia}
+            </span>
+            <span>
+             {horario.hora}
+            </span>
+          </li>
         )) }
       </ul>
-      <div id="estadisticas">
-        { curso.detalle.estadisticas[0].inscriptos }
-        { curso.detalle.maxRegistro }
-        { curso.detalle.corte }
+      <div id="estadisticas" className="flex justify-between">
+        <Stat icon={FaUsers} value={curso.detalle.estadisticas[0].inscriptos} />
+        <Stat icon={FaStopwatch} value={curso.maxRegistro} />
+        <Stat icon={FaCut} value={curso.corte} />
       </div>
-    </article>
+    </Card>
   )
 }
 
@@ -29,6 +39,7 @@ CursoCard.propTypes = {
   curso: PropTypes.shape({
     id: PropTypes.number.isRequired,
     numero: PropTypes.number.isRequired,
+    curso: PropTypes.string,
     materia: PropTypes.string.isRequired,
     docente: PropTypes.string,
     inscriptos: PropTypes.number,
