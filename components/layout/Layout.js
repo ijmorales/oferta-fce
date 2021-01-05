@@ -5,7 +5,9 @@ import Sidebar from './Sidebar'
 import TopBar from './TopBar'
 import Content from './Content'
 import { screens } from '../../helpers/breakpoints'
+import Navbar from './Navbar'
 
+<<<<<<< HEAD
 export default function Layout ({ children }) {
   const [dimensions, setDimensions] = useState({})
   const [sidebarToggled, setSidebarToggled] = useState(false)
@@ -55,6 +57,17 @@ export default function Layout ({ children }) {
         </div>
 =======
       <div className="container mx-auto">
+=======
+const Layout = ({ children }) => {
+  return (
+    <>
+      <header className="w-full shadow-lg bg-white flex">
+        <div className=" flex-grow bg-white container mx-auto" id="navbar-wrapper">
+          <Navbar />
+        </div>
+      </header>
+      <div className="container mx-auto flex pt-24">
+>>>>>>> 6140240 (Simplificado el layout y rediseñada la navbar)
         {children}
 >>>>>>> b5737eb (Setup spacing, paleta de colores y delinee CursoCard)
       </div>
