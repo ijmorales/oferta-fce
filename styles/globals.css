@@ -15,6 +15,25 @@
   body {
     @apply bg-light-gray;
   }
+
+  .menu-enter {
+    position: relative;
+    transform: translateX(-110%);
+  }
+
+  .menu-enter-active {
+    transform: translateX(0%);
+    transition: transform 0.3s ease;
+  }
+
+  .menu-exit {
+    position: relative;
+  }
+
+  .menu-exit-active {
+    transform: translateX(-110%);
+    transition: transform 0.3s ease;
+  }
 }
 @tailwind components;
 
