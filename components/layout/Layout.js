@@ -66,8 +66,12 @@ const Layout = ({ children }) => {
           <Navbar />
         </div>
       </header>
+<<<<<<< HEAD
       <div className="container mx-auto flex pt-24">
 >>>>>>> 6140240 (Simplificado el layout y rediseñada la navbar)
+=======
+      <div className="container mx-auto flex flex-col justify-center px-2">
+>>>>>>> b71c3d5 (Centrado del container del layout)
         {children}
 >>>>>>> b5737eb (Setup spacing, paleta de colores y delinee CursoCard)
       </div>
