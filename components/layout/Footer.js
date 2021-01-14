@@ -3,21 +3,21 @@ import { FaGithub } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <>
+    <div className="text-war-blue ml-auto">
       <a
         href="https://github.com/ijmorales/oferta-fce"
         className="flex justify-center align-middle p-4"
         rel="noreferrer"
         target="_blank"
       >
-        <span className="mr-4 flex align-center">
-          <FaGithub className="h-6 w-6"/>
+        <span className="mr-4 flex items-center">
+          <FaGithub className="h-3 w-3"/>
         </span>
         <p>
           Desarrollado por Nacho Morales
         </p>
       </a>
-    </>
+    </div>
   )
 }
 
