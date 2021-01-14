@@ -16,10 +16,15 @@ export default function SearchBar ({ handleSearch }) {
   }
 
   return (
-    <div className="flex">
-      <FaSearch />
-      <input type="text" placeholder="Buscar..." onChange={handleChange} value={searchValue} onKeyDown={handleKeyDown}
-      />
+    <div className="flex flex-grow">
+      <div id="iconBox" className="flex bg-war-blue border border-war-blue rounded-l-full">
+        <div className="p-3 text-white h-full flex justify-center items-center">
+          <FaSearch height={16} width={16}/>
+        </div>
+      </div>
+      <div id="inputContainer" className="flex flex-grow border border-war-blue rounded-r-full px-2 overflow-hidden">
+        <input type="text" placeholder="Buscar..." className="border-0 w-full p-2 focus:outline-none" onChange={handleChange} value={searchValue} onKeyDown={handleKeyDown} />
+      </div>
     </div>
   )
 }
