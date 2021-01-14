@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { FaUsers, FaStopwatch, FaCut, FaUniversity } from 'react-icons/fa'
+import { FaUsers, FaCut, FaUniversity } from 'react-icons/fa'
 import CursoTitle from './CursoTitle'
 import ExtraInfo from './ExtraInfo'
 import ScoreCircle from './ScoreCircle'
@@ -14,7 +14,7 @@ export default function CursoCard ({ curso }) {
             <CursoTitle materia={curso.materia} docente={curso.docente} numero={curso.curso} />
           </div>
           <div className="ml-4">
-            <ScoreCircle score={curso.detalle.puntaje} />
+            <ScoreCircle score={curso.detalle ? Math.fround(curso.detalle.puntaje).toFixed(1) : 'N/D'} />
           </div>
         </div>
         <ul>
@@ -61,7 +61,7 @@ CursoCard.propTypes = {
     corte: PropTypes.number,
     maxRegistro: PropTypes.number,
     puntaje: PropTypes.number,
-    horario: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    horario: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     detalle: PropTypes.object,
     sede: PropTypes.string
   })
