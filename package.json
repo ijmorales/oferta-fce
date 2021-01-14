@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "autoprefixer": "^10.1.0",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.20",
     "next": "10.0.3",
     "postcss": "^8.2.1",
     "prettier": "^2.2.1",
