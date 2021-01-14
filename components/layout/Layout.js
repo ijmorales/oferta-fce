@@ -60,22 +60,29 @@ export default function Layout ({ children }) {
 =======
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <header className="w-full shadow-lg bg-white flex">
         <div className=" flex-grow bg-white container mx-auto" id="navbar-wrapper">
           <Navbar />
         </div>
       </header>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className="container mx-auto flex pt-24">
 >>>>>>> 6140240 (Simplificado el layout y rediseñada la navbar)
 =======
       <div className="container mx-auto flex flex-col justify-center px-2">
 >>>>>>> b71c3d5 (Centrado del container del layout)
+=======
+      <div className="container mx-auto flex flex-col justify-center px-2 w-full">
+>>>>>>> 81eb537 (Container ahora height: 100vh)
         {children}
 >>>>>>> b5737eb (Setup spacing, paleta de colores y delinee CursoCard)
       </div>
-    </>
+      <div className="text-xs flex container mx-auto w-full mt-auto">
+        <Footer />
+      </div>
+    </div>
   )
 }
 
