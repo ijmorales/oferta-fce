@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 export default function Navbar () {
   const [showMenu, setShowMenu] = useState(false)
@@ -33,19 +33,19 @@ export default function Navbar () {
         classNames="menu"
       >
         <ul className="w-full" id="mobile-menu">
-          <li className="font-bold text-xl block group hover:bg-war-blue md:hover:bg-white">
+          <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
             <a href="/about" className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">Acerca de</a>
           </li>
-          <li className="font-bold text-xl block group hover:bg-war-blue md:hover:bg-white">
+          <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
             <a href="/feedback" className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">Feedback</a>
           </li>
         </ul>
       </CSSTransition>
       <ul className="hidden md:flex" id="mobile-menu">
-        <li className="font-bold text-xl block group hover:bg-war-blue md:hover:bg-white">
+        <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
           <a href="/about" className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">Acerca de</a>
         </li>
-        <li className="font-bold text-xl block group hover:bg-war-blue md:hover:bg-white">
+        <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
           <a href="/feedback" className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">Feedback</a>
         </li>
       </ul>
