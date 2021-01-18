@@ -4,26 +4,44 @@ import chunk from 'lodash/chunk'
 import Layout from '../components/layout/Layout'
 import CursoGrid from '../components/cursos/CursoGrid'
 import Filter from '../components/filter/Filter'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Paginator from '../components/pagination/Paginator'
+import Dropdown from '../components/dropdown/Dropdown'
+import { update } from 'lodash'
 
 export default function Oferta ({ oferta }) {
   const [itemsPerPage, setItemsPerPage] = useState(8)
   const [currentPage, setCurrentPage] = useState(1)
-  const [cursos, setCursos] = useState(chunk(oferta, itemsPerPage))
-  function handleSearch (filterFn) {
-    console.log('filtering...', filterFn)
-    setCursos(chunk(oferta.filter(filterFn), itemsPerPage))
+  const [cursos, setCursos] = useState([])
+  const [currentFilters, setCurrentFilters] = useState({})
+
+  function handleFilter (filterFn, filterKey) {
+    // Add filter to the list of current filters or replace
+    const updatedFilters = Object.assign(currentFilters, { [filterKey]: filterFn })
+
+    // Apply every filter
+    const filteredOferta = Object.values(updatedFilters).reduce((oferta, filterFn) => (
+      oferta.filter(filterFn))
+    , oferta)
+    console.log(updatedFilters)
+
+    setCursos(chunk(filteredOferta, itemsPerPage))
+    setCurrentFilters(updatedFilters)
+    setCurrentPage(1)
   }
+
+  useEffect(() => {
+    setCursos(chunk(oferta, itemsPerPage))
+  }, [])
 
   return (
     <Layout>
       <div className="mt-5 order-1 h-full">
-        <Filter handleSearch={handleSearch}/>
+        <Filter handleFilter={handleFilter}/>
       </div>
       {cursos && cursos.length > 1
         ? (
-          <div className="mt-5 flex flex-grow order-3 w-full xl:self-end xl:order-2 xl:w-1/4">
+          <div className="mt-5 flex order-3 xl:self-end xl:order-2">
             <Paginator
               currentPage={currentPage}
               totalPages={cursos.length}
