@@ -33,13 +33,16 @@ export default function Paginator ({ totalPages, currentPage, selectPage }) {
     const pagesRight = Math.min(sidePages, totalPages - currentPage)
 
     // Fill to the left if there's not enough elements on right side
-    if (pagesRight <= sidePages) { pagesLeft += sidePages - pagesRight }
+    // and if there's space in the left
+    if (pagesRight <= sidePages && (currentPage - pagesLeft) > 1) {
+      pagesLeft += sidePages - pagesRight
+    }
 
     for (let i = currentPage - pagesLeft; i <= totalPages; i++) {
-      generatedPages.push(<PageItem pageNumber={i} current={i === currentPage} selectPageHandler={selectPageHandler} />)
-      if (generatedPages.length >= maxPages) {
-        break
+      if (generatedPages.length >= maxPages || i <= 0) {
+        continue
       }
+      generatedPages.push(<PageItem pageNumber={i} current={i === currentPage} selectPageHandler={selectPageHandler} />)
     }
 
     return generatedPages
