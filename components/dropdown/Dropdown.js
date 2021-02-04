@@ -1,21 +1,18 @@
-import { Menu, Transition } from '@headlessui/react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import classnames from 'classnames'
-import { FaChevronCircleDown } from 'react-icons/fa'
 import DropdownItem from './DropdownItem'
 
-export default function Dropdown ({ items, title, itemsStyles, clickHandler, checkable, isChecked }) {
+export default function Dropdown ({ items, itemsStyles, clickHandler, checkable, isChecked, children }) {
   const [open, setOpen] = useState(false)
   return (
-    <>
+    <div id="dropdown">
       <div
-        className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        {title}
-        <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+        {children}
       </div>
+
       <ul
         className={classnames(
           'flex flex-col',
@@ -40,11 +37,10 @@ export default function Dropdown ({ items, title, itemsStyles, clickHandler, che
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 
 Dropdown.propTypes = {
-  title: PropTypes.string,
   items: PropTypes.array
 }

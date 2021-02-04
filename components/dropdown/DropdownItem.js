@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function DropdownItem ({ title, checkable = false, checked }) {
-  //const [selected, setSelected] = useState(isSelected !== undefined ? isSelected(title) : false)
+  const [selected, setSelected] = useState(checked)
   return (
     <>
       { checkable
@@ -9,6 +9,7 @@ export default function DropdownItem ({ title, checkable = false, checked }) {
             <input
             type="radio"
             checked={checked}
+            onChange={() => setSelected(checked)}
             className="mr-3"
             />
           )
