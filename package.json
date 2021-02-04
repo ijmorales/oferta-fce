@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm --node-options=--inspect run next-dev",
+    "next-dev": "next dev",
     "export": "next build && next export",
     "build": "next build",
     "start": "next start"
