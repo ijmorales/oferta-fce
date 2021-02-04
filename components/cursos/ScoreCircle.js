@@ -11,5 +11,5 @@ export default function ScoreCircle ({ score }) {
 }
 
 ScoreCircle.propTypes = {
-  score: PropTypes.number
+  score: PropTypes.string
 }
