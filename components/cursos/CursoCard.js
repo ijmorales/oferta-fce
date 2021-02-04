@@ -39,7 +39,7 @@ export default function CursoCard ({ curso }) {
             ? (
               <>
                 <ExtraInfo icon={FaUsers} value={curso.detalle.estadisticas[0].inscriptos} />
-                <ExtraInfo icon={FaCut} value={curso.corte} />
+                <ExtraInfo icon={FaCut} value={curso.detalle.corte} />
               </>
               )
             : 'No hay datos'
