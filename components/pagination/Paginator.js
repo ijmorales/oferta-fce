@@ -63,9 +63,9 @@ export default function Paginator ({ totalPages, currentPage, selectPage }) {
         </div>
       </div>
       {pages.map((page, idx) => (
-        <>
+        <div key={idx}>
           {page}
-        </>
+        </div>
       ))}
       <div className="page-item flex flex-col justify-center mr-1" onClick={() => selectPageHandler(currentPage + 1)}>
         <div className="flex flex-col justify-center h-full">

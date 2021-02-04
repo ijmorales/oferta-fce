@@ -1,64 +1,17 @@
 import PropTypes from 'prop-types'
 import Card from '../Card'
-import FilterItem from './FilterItem'
 import SearchBar from './SearchBar'
 import SortBy from './SortBy'
 import Dropdown from '../dropdown/Dropdown'
-import { useEffect, useState } from 'react'
-import { forEach, union } from 'lodash'
+import { useFilterDia, DIAS } from '../hooks/useFilterDia'
+import { useFilterHorario, HORAS } from '../hooks/useFilterHorario'
+import { useFilterCorte, CORTE } from '../hooks/useFilterCorte'
+import { FaChevronCircleDown } from 'react-icons/fa'
 
-const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
-const HORARIOS = [
-  '07:00-09:00',
-  '09:00-11:00',
-  '11:00-13:00',
-  '13:00-15:00',
-  '15:00-17:00',
-  '17:00-19:00',
-  '19:00-21:00',
-  '21:00-23:00'
-]
-const CORTE = ['Tiene corte', 'No tiene corte']
-
-function useDiaFilter (handleFilter) {
-  const [diasFiltered, setDiasFiltered] = useState(DIAS.map((dia) => dia.toLowerCase()))
-
-  const filterDia = (dia) => {
-    const diaLower = dia.toLowerCase()
-    if (diasFiltered.includes(diaLower)) {
-      setDiasFiltered(diasFiltered.filter((elem) => elem !== diaLower))
-    } else {
-      setDiasFiltered(union(diasFiltered, [diaLower]))
-    }
-  }
-
-  useEffect(() => {
-    handleFilter((curso) => {
-      if (curso.horario.length === 0) { return false }
-
-      const diasCurso = curso.horario.map((diaHorario) => diaHorario.dia).sort()
-
-      // Check if diasFiltered contains diasCurso - O(n) solution compared
-      // to using every and indexOf directly O(n2)
-
-      const diasFilteredObj = {}
-      diasFiltered.forEach((elem, idx) => {
-        diasFilteredObj[elem] = idx
-      })
-
-      const match = diasCurso.every((elem) => {
-        return diasFilteredObj[elem] !== undefined
-      })
-
-      return match
-    }, 'dia')
-  }, [diasFiltered])
-
-  return [diasFiltered, filterDia]
-}
-
-export default function Filter ({ handleFilter }) {
-  const [diasFiltered, filterDia] = useDiaFilter(handleFilter)
+export default function Filter ({ handleFilter, handleSort, handleSortDirection, currentSort, currentSortDirection }) {
+  const [diasFiltered, filterDia] = useFilterDia(handleFilter)
+  const [horariosFiltered, filterHorario] = useFilterHorario(handleFilter)
+  const [corteFiltered, filterCorte] = useFilterCorte(handleFilter)
 
   return (
     <Card className="flex justify-between xl:flex-row xl:justify-between px-5 py-5 xl:px-7.5">
@@ -69,30 +22,58 @@ export default function Filter ({ handleFilter }) {
         <div className="flex flex-wrap justify-center text-war-blue py-4">
           <div className="px-1">
             <Dropdown
-              title={'Dias'}
               items={DIAS}
               clickHandler={(item) => filterDia(item)}
               checkable
               isChecked={(item) => diasFiltered.includes(item.toLowerCase())}
-            />
+            >
+              <div
+                className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
+              >
+                {'Dias'}
+                <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+              </div>
+            </Dropdown>
           </div>
           <div className="px-1">
             <Dropdown
-              title={'Horarios'}
-              items={HORARIOS}
+              items={HORAS}
               itemsStyles="font-mono"
-              filterFn={null}
-            />
+              clickHandler={(item) => filterHorario(item)}
+              checkable
+              isChecked={(item) => horariosFiltered.includes(item)}
+            >
+              <div
+                className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
+              >
+                {'Horarios'}
+                <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+              </div>
+            </Dropdown>
           </div>
           <div className="px-1">
             <Dropdown
-              title={'Corte'}
               items={CORTE}
-            />
+              clickHandler={(item) => filterCorte(item)}
+              checkable
+              isChecked={(item) => corteFiltered.includes(item)}
+            >
+              <div
+                className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
+              >
+                {'Corte'}
+                <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+              </div>
+            </Dropdown>
           </div>
         </div>
         <div className="flex justify-center items-center text-war-blue cursor-pointer py-4 xl:px-10">
-          <SortBy currentSort={'Nombre'} />
+          <SortBy
+            currentSort={currentSort}
+            currentSortDirection={currentSortDirection}
+            handleSort={handleSort}
+            handleSortDirection={handleSortDirection}
+          />
         </div>
       </div>
     </Card>
@@ -100,5 +81,9 @@ export default function Filter ({ handleFilter }) {
 }
 
 Filter.propTypes = {
-  handleFilter: PropTypes.func
+  handleFilter: PropTypes.func,
+  handleSort: PropTypes.func,
+  handleSortDirection: PropTypes.func,
+  currentSort: PropTypes.string,
+  currentSortDirection: PropTypes.string
 }

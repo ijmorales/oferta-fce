@@ -6,14 +6,15 @@ import CursoGrid from '../components/cursos/CursoGrid'
 import Filter from '../components/filter/Filter'
 import { useEffect, useState } from 'react'
 import Paginator from '../components/pagination/Paginator'
-import Dropdown from '../components/dropdown/Dropdown'
-import { update } from 'lodash'
+import { SORT_OPTIONS } from '../components/filter/SortBy'
 
 export default function Oferta ({ oferta }) {
   const [itemsPerPage, setItemsPerPage] = useState(8)
   const [currentPage, setCurrentPage] = useState(1)
-  const [cursos, setCursos] = useState([])
+  const [cursos, setCursos] = useState(chunk(oferta, itemsPerPage))
   const [currentFilters, setCurrentFilters] = useState({})
+  const [currentSort, setCurrentSort] = useState(SORT_OPTIONS[0])
+  const [currentSortDirection, setCurrentSortDirection] = useState('asc')
 
   function handleFilter (filterFn, filterKey) {
     // Add filter to the list of current filters or replace
@@ -23,21 +24,34 @@ export default function Oferta ({ oferta }) {
     const filteredOferta = Object.values(updatedFilters).reduce((oferta, filterFn) => (
       oferta.filter(filterFn))
     , oferta)
-    console.log(updatedFilters)
 
     setCursos(chunk(filteredOferta, itemsPerPage))
     setCurrentFilters(updatedFilters)
     setCurrentPage(1)
   }
 
+  // useEffect(() => {
+  //   Sort data on oferta change
+  //   const sortedOferta = oferta.sort(currentSort.sortFn(currentSortDirection))
+  //   setCursos(chunk(sortedOferta, itemsPerPage))
+  // }, [oferta])
+
   useEffect(() => {
-    setCursos(chunk(oferta, itemsPerPage))
-  }, [])
+    const reducedCursos = cursos.reduce((acc, page) => acc.concat(page), [])
+    const sortedCursos = reducedCursos.sort(currentSort.sortFn(currentSortDirection))
+    setCursos(chunk(sortedCursos, itemsPerPage))
+  }, [currentSort, currentSortDirection])
 
   return (
     <Layout>
       <div className="mt-5 order-1 h-full">
-        <Filter handleFilter={handleFilter}/>
+        <Filter
+          handleFilter={handleFilter}
+          handleSort={(sortObj) => setCurrentSort(sortObj)}
+          handleSortDirection={(sortDirection) => setCurrentSortDirection(sortDirection)}
+          currentSort={currentSort}
+          currentSortDirection={currentSortDirection}
+        />
       </div>
       {cursos && cursos.length > 1
         ? (
