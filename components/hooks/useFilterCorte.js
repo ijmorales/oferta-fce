@@ -23,7 +23,7 @@ export function useFilterCorte (handleFilter) {
       } else {
         return filteredCorte.includes('No tiene corte')
       }
-    })
+    }, 'corte')
   }, [filteredCorte])
 
   return [filteredCorte, filterCorte]

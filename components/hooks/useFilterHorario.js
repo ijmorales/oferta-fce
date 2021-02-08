@@ -8,7 +8,8 @@ export const HORAS = [
   '15:00-17:00',
   '17:00-19:00',
   '19:00-21:00',
-  '21:00-23:00'
+  '21:00-23:00',
+  'Virtual'
 ]
 
 export function useFilterHorario (handleFilter) {
@@ -25,9 +26,12 @@ export function useFilterHorario (handleFilter) {
     }
   }
 
+  // Indeed this could be done without an effect, which would trigger less re-renders
   useEffect(() => {
     handleFilter((curso) => {
-      if (curso.horario.length === 0) { return false }
+      if (curso.horario === null) {
+        return filteredHorarios.includes('Virtual')
+      }
       const horarios = curso.horario.map((diaHorario) => diaHorario.hora)
 
       const filteredHorariosObj = {}
@@ -40,7 +44,7 @@ export function useFilterHorario (handleFilter) {
       })
 
       return match
-    })
+    }, 'horario')
   }, [filteredHorarios])
 
   return [filteredHorarios, filterHorario]

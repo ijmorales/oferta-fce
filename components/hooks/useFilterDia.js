@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { union } from 'lodash'
 
-export const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+export const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Virtual']
 export function useFilterDia (handleFilter) {
   const [diasFiltered, setDiasFiltered] = useState(DIAS.map((dia) => dia.toLowerCase()))
 
@@ -16,7 +16,11 @@ export function useFilterDia (handleFilter) {
 
   useEffect(() => {
     handleFilter((curso) => {
-      if (curso.horario === null) { return false }
+      // Handle Virtual cursos (cursos that have no Horario)
+
+      if (curso.horario === null) {
+        return diasFiltered.includes('virtual')
+      }
 
       const diasCurso = curso.horario.map((diaHorario) => diaHorario.dia).sort()
 
