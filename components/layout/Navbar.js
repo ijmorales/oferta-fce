@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { CSSTransition } from 'react-transition-group'
@@ -20,7 +19,7 @@ export default function Navbar () {
     <nav className="flex flex-wrap justify-between items-center navbar-animated">
       <div id="logo" className="flex flex-shrink-0 p-3.5 sm:px-2">
         <a href="/oferta" className="flex">
-          <Image src="/logo3.svg" height="42" width="165" />
+          <img src="/logo3.svg" height="42" width="165" />
         </a>
       </div>
       <button className="flex md:hidden p-3.5" onClick={() => setShowMenu(!showMenu)}>

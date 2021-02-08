@@ -1,3 +1,4 @@
+import fs from 'fs'
 import PropTypes from 'prop-types'
 import chunk from 'lodash/chunk'
 import Layout from '../../components/layout/Layout'
@@ -66,11 +67,16 @@ export default function Oferta ({ oferta }) {
 }
 
 export async function getStaticProps (context) {
-  const res = await fetch('http://localhost:3000/api/cursos')
-  const data = await res.json()
+  let oferta = JSON.parse(fs.readFileSync('data/oferta.example.json', 'utf-8'))
+  oferta = oferta.map((curso) => {
+    if (!curso.docente) {
+      curso.docente = curso.titular
+    }
+    return curso
+  })
   return {
     props: {
-      oferta: data.oferta
+      oferta: oferta
     }
   }
 }

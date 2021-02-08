@@ -8,6 +8,7 @@ import { screens } from '../../helpers/breakpoints'
 import Navbar from './Navbar'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default function Layout ({ children }) {
   const [dimensions, setDimensions] = useState({})
   const [sidebarToggled, setSidebarToggled] = useState(false)
@@ -59,6 +60,9 @@ export default function Layout ({ children }) {
       <div className="container mx-auto">
 =======
 const Layout = ({ children }) => {
+=======
+export default function Layout ({ children }) {
+>>>>>>> 63f0625 (Improvements on static export)
   return (
     <div className="h-screen flex flex-col">
       <header className="w-full shadow-lg bg-white flex">
