@@ -13,10 +13,8 @@ module.exports = {
       '/oferta': { page: '/oferta' }
     }
     data.forEach((curso) => {
-      paths[`/oferta/${curso.id}`] = { page: '/oferta/[id]', query: { id: curso.id, curso: curso } }
+      paths[`/oferta/${curso.id}`] = { page: '/oferta/[id]' }
     })
-    console.log(paths)
-
     return paths
   }
 }
