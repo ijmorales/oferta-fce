@@ -3,7 +3,7 @@ import { FaGithub } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <div className="text-war-blue ml-auto">
+    <div className="text-war-blue flex flex-grow justify-center items-center lg:justify-end">
       <a
         href="https://github.com/ijmorales/oferta-fce"
         className="flex justify-center align-middle p-4"
