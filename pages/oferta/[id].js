@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Layout from '../../components/layout/Layout'
 import Opinion from '../../components/cursos/Opinion'
 import { useRef } from 'react'
+import { FaSadTear } from 'react-icons/fa'
 export default function Curso ({ curso }) {
   if (curso == null) {
     return (
@@ -12,45 +13,58 @@ export default function Curso ({ curso }) {
     )
   }
 
-  const comentarios = {}
-  if (curso.detalle) {
-    const userNumber = useRef(1)
-    Object.entries(curso.detalle.comentarios).forEach((anio) => {
-      comentarios[anio[0]] = []
-      anio[1].forEach((comentario, idx) => {
-        if (idx === 0 || userNumber.current === 3) {
-          userNumber.current = 1
-        }
-        if (userNumber.current === 1) {
-          userNumber.current += 1
-        }
-        if (userNumber.current === 2) {
-          userNumber.current += 1
-        }
-
-        comentarios[anio[0]].push(<Opinion text={comentario} key={idx} userNumber={userNumber.current} />)
-      })
+  const comentarios = []
+  if (curso.detalle && curso.detalle.comentarios) {
+    const icon = useRef(1)
+    curso.detalle.comentarios.forEach((c, idx) => {
+      comentarios.push(<Opinion key={idx} text={c} number={idx + 1} userNumber={icon.current} />)
+      if (icon.current < 3) {
+        icon.current += 1
+      } else {
+        icon.current = 1
+      }
     })
   }
 
-  console.log(comentarios)
   return (
     <Layout>
-      { Object.keys(comentarios).length > 1
+      { comentarios.length > 1
         ? (
-            Object.entries(comentarios).map(anio => (
-                <div className="" key={anio[0]}>
-                  <h2>{anio[0]}</h2>
-                  <div className="overflow-auto">
-                    {anio[1]}
-                  </div>
-                </div>
-            ))
+          <>
+            <div id="breadcrumb" className="pt-5 italic underline text-gray-600">
+              <a href="/oferta">
+                OFERTA
+              </a>
+              /
+              <a href={`/oferta/${curso.id}`}>
+                {`${curso.materia.toUpperCase()} (${curso.curso})`}
+              </a>
+            </div>
+            <h2 className="text-3xl font-bold mt-9 text-war-blue">
+              Opiniones
+            </h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 2xl:gap-9 mt-5">
+              {comentarios.map((el) => el)}
+            </div>
+            <a href="/oferta" className="mt-5 flex justify-center">
+              <button className="border border-gray-700 bg-gray-600 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-700 focus:outline-none focus:shadow-outline">
+                Volver
+              </button>
+            </a>
+          </>
           )
         : (
-            <div>
-              No hay comentarios
-            </div>
+          <div className="mt-9 flex flex-grow align-middle items-center flex-col">
+            <FaSadTear className="h-24 w-24 flex text-war-blue" />
+            <p className="text-3xl flex mt-5 text-war text-center">
+              Este curso no tiene opiniones
+            </p>
+            <a href="/oferta" className="mt-5">
+              <button className="border border-gray-700 bg-gray-600 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-700 focus:outline-none focus:shadow-outline">
+                Volver
+              </button>
+            </a>
+          </div>
           )
       }
     </Layout>
