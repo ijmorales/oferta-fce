@@ -14,12 +14,12 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
   const [corteFiltered, filterCorte] = useFilterCorte(handleFilter)
 
   return (
-    <Card className="flex justify-between xl:flex-row xl:justify-between px-5 py-5 xl:px-7.5">
+    <Card className="flex flex-wrap justify-between xl:justify-between px-5 py-5 xl:px-7.5 items-center">
       <div className="flex w-full xl:w-175">
         <SearchBar handleSearch={ handleFilter } />
       </div>
-      <div className="flex flex-wrap items-center">
-        <div className="flex flex-wrap justify-center text-war-blue py-4">
+      <div className="flex flex-wrap justify-center items-center mx-auto">
+        <div className="flex flex-wrap justify-center text-war-blue py-4 mx-2">
           <div className="px-1">
             <Dropdown
               items={DIAS}
@@ -51,7 +51,7 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
               </div>
             </Dropdown>
           </div>
-          <div className="px-1">
+          <div className="px-1 mt-2 sm:mt-0">
             <Dropdown
               items={CORTE}
               clickHandler={(item) => filterCorte(item)}
