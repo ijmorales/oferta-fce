@@ -20,7 +20,7 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
       </div>
       <div className="flex flex-wrap justify-center items-center mx-auto">
         <div className="flex flex-wrap justify-center text-war-blue py-4 mx-2">
-          <div className="px-1">
+          <div className="px-1 mb-2 sm:mb-0">
             <Dropdown
               items={DIAS}
               clickHandler={(item) => filterDia(item)}
@@ -35,7 +35,7 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
               </div>
             </Dropdown>
           </div>
-          <div className="px-1">
+          <div className="px-1 mb-2 sm:mb-0">
             <Dropdown
               items={HORAS}
               itemsStyles="font-mono"
@@ -51,7 +51,7 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
               </div>
             </Dropdown>
           </div>
-          <div className="px-1 mt-2 sm:mt-0">
+          <div className="px-1">
             <Dropdown
               items={CORTE}
               clickHandler={(item) => filterCorte(item)}

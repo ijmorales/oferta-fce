@@ -49,7 +49,7 @@ export default function Oferta ({ oferta }) {
       </div>
       {cursos && cursos.length > 1
         ? (
-          <div className="mt-5 flex order-3 xl:self-end xl:order-2">
+          <div className="mt-5 flex order-3 xl:self-end xl:order-2 justify-center md:justify-end">
             <Paginator
               currentPage={currentPage}
               totalPages={cursos.length}

@@ -7,8 +7,8 @@ const PageItem = ({ pageNumber, current, selectPageHandler }) => (
   <div
     className={
       classnames('page-item',
-        'xl:px-3 xl:py-2 px-2 py-2',
-        'flex justify-center items-center flex-grow',
+        'xl:px-4 xl:py-2 px-3 py-2',
+        'flex justify-center items-center',
         current ? 'bg-fce-orange text-white page-item' : null)
     }
     key={pageNumber}

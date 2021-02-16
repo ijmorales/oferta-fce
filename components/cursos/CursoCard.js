@@ -8,8 +8,8 @@ import Card from '../Card'
 export default function CursoCard ({ curso }) {
   return (
     <a href={`/oferta/${curso.id}`}>
-      <Card>
-        <article className="lg:w-96 h-59.5 p-5 flex flex-col justify-between">
+      <Card className="lg:flex">
+        <article className="lg:w-96 h-59.5 p-5 flex flex-col justify-between flex-grow">
           <div id="article-header" className="flex justify-between">
             <div className="flex flex-col flex-grow w-5/6">
               <CursoTitle materia={curso.materia} docente={curso.docente} numero={curso.curso} />
