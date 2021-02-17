@@ -1,5 +1,5 @@
-import React from 'react'
-import { FaGithub } from 'react-icons/fa'
+import React from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -8,17 +8,14 @@ const Footer = () => {
         href="https://github.com/ijmorales/oferta-fce"
         className="flex justify-center align-middle p-4"
         rel="noreferrer"
-        target="_blank"
-      >
+        target="_blank">
         <span className="mr-4 flex items-center">
-          <FaGithub className="h-3 w-3"/>
+          <FaGithub className="h-3 w-3" />
         </span>
-        <p>
-          Desarrollado por Nacho Morales
-        </p>
+        <p>Desarrollado por Nacho Morales</p>
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

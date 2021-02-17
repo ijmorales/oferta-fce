@@ -1,11 +1,14 @@
-import PropTypes from 'prop-types'
-import Footer from './Footer'
-import Navbar from './Navbar'
-export default function Layout ({ children }) {
+import PropTypes from 'prop-types';
+
+import Footer from './Footer';
+import Navbar from './Navbar';
+export default function Layout({ children }) {
   return (
     <div className="h-screen flex flex-col">
       <header className="w-full shadow-lg bg-white flex">
-        <div className=" flex-grow bg-white container mx-auto" id="navbar-wrapper">
+        <div
+          className=" flex-grow bg-white container mx-auto"
+          id="navbar-wrapper">
           <Navbar />
         </div>
       </header>
@@ -16,9 +19,9 @@ export default function Layout ({ children }) {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
 
 Layout.propTypes = {
   children: PropTypes.object
-}
+};

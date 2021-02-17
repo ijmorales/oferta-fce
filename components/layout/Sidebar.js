@@ -1,11 +1,11 @@
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 import {
-  HiOutlineX,
   HiOutlineHome,
+  HiOutlineInformationCircle,
   HiOutlineStar,
-  HiOutlineInformationCircle
-} from 'react-icons/hi'
-import PropTypes from 'prop-types'
-import Link from 'next/link'
+  HiOutlineX
+} from 'react-icons/hi';
 
 const Sidebar = ({ sidebarShow, closeSidebar }) => {
   return (
@@ -16,12 +16,10 @@ const Sidebar = ({ sidebarShow, closeSidebar }) => {
           sidebarShow
             ? 'bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:h-auto justify-between'
             : 'hidden'
-        }
-      >
+        }>
         <div
           id="closeSidebar-button"
-          className="lg:hidden flex justify-end h-20"
-        >
+          className="lg:hidden flex justify-end h-20">
           <button onClick={closeSidebar} className="p-4">
             <HiOutlineX className="w-10 h-10" />
           </button>
@@ -55,12 +53,12 @@ const Sidebar = ({ sidebarShow, closeSidebar }) => {
         <div id="aligner" className="h-20 invisible"></div>
       </nav>
     </>
-  )
-}
+  );
+};
 
 Sidebar.propTypes = {
   sidebarShow: PropTypes.bool,
   closeSidebar: PropTypes.func
-}
+};
 
-export default Sidebar
+export default Sidebar;

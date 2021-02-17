@@ -1,10 +1,7 @@
-import { FaChevronCircleDown } from "react-icons/fa"
-import Dropdown from '../dropdown/Dropdown'
+import { FaChevronCircleDown } from 'react-icons/fa';
 
-export default function FilterItem ({ displayName, items }) {
-  return (
-    <Dropdown title={ displayName }>
-      { items }
-    </Dropdown>
-  )
+import Dropdown from '../dropdown/Dropdown';
+
+export default function FilterItem({ displayName, items }) {
+  return <Dropdown title={displayName}>{items}</Dropdown>;
 }
