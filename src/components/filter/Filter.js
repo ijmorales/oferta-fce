@@ -1,22 +1,29 @@
-import PropTypes from 'prop-types'
-import Card from '../Card'
-import SearchBar from './SearchBar'
-import SortBy from './SortBy'
-import Dropdown from '../dropdown/Dropdown'
-import { useFilterDia, DIAS } from '../hooks/useFilterDia'
-import { useFilterHorario, HORAS } from '../hooks/useFilterHorario'
-import { useFilterCorte, CORTE } from '../hooks/useFilterCorte'
-import { FaChevronCircleDown } from 'react-icons/fa'
+import PropTypes from 'prop-types';
+import { FaChevronCircleDown } from 'react-icons/fa';
 
-export default function Filter ({ handleFilter, handleSort, handleSortDirection, currentSort, currentSortDirection }) {
-  const [diasFiltered, filterDia] = useFilterDia(handleFilter)
-  const [horariosFiltered, filterHorario] = useFilterHorario(handleFilter)
-  const [corteFiltered, filterCorte] = useFilterCorte(handleFilter)
+import { CORTE, useFilterCorte } from '../../hooks/useFilterCorte';
+import { DIAS, useFilterDia } from '../../hooks/useFilterDia';
+import { HORAS, useFilterHorario } from '../../hooks/useFilterHorario';
+import Card from '../Card';
+import Dropdown from '../dropdown/Dropdown';
+import SearchBar from './SearchBar';
+import SortBy from './SortBy';
+
+export default function Filter({
+  handleFilter,
+  handleSort,
+  handleSortDirection,
+  currentSort,
+  currentSortDirection
+}) {
+  const [diasFiltered, filterDia] = useFilterDia(handleFilter);
+  const [horariosFiltered, filterHorario] = useFilterHorario(handleFilter);
+  const [corteFiltered, filterCorte] = useFilterCorte(handleFilter);
 
   return (
     <Card className="flex flex-wrap justify-between xl:justify-between px-5 py-5 xl:px-7.5 items-center">
       <div className="flex w-full xl:w-175">
-        <SearchBar handleSearch={ handleFilter } />
+        <SearchBar handleSearch={handleFilter} />
       </div>
       <div className="flex flex-wrap justify-center items-center mx-auto">
         <div className="flex flex-wrap justify-center text-war-blue py-4 mx-2">
@@ -27,11 +34,9 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
               checkable
               isChecked={(item) => diasFiltered.includes(item.toLowerCase())}
             >
-              <div
-                className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
-              >
+              <div className="flex items-center p-1 border border-war-blue px-3 cursor-pointer">
                 {'Dias'}
-                <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+                <FaChevronCircleDown className="w-4 h-4 ml-2" />
               </div>
             </Dropdown>
           </div>
@@ -43,11 +48,9 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
               checkable
               isChecked={(item) => horariosFiltered.includes(item)}
             >
-              <div
-                className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
-              >
+              <div className="flex items-center p-1 border border-war-blue px-3 cursor-pointer">
                 {'Horarios'}
-                <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+                <FaChevronCircleDown className="w-4 h-4 ml-2" />
               </div>
             </Dropdown>
           </div>
@@ -58,11 +61,9 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
               checkable
               isChecked={(item) => corteFiltered.includes(item)}
             >
-              <div
-                className="flex items-center p-1 border border-war-blue px-3 cursor-pointer"
-              >
+              <div className="flex items-center p-1 border border-war-blue px-3 cursor-pointer">
                 {'Corte'}
-                <FaChevronCircleDown className="w-4 h-4 ml-2"/>
+                <FaChevronCircleDown className="w-4 h-4 ml-2" />
               </div>
             </Dropdown>
           </div>
@@ -77,7 +78,7 @@ export default function Filter ({ handleFilter, handleSort, handleSortDirection,
         </div>
       </div>
     </Card>
-  )
+  );
 }
 
 Filter.propTypes = {
@@ -86,4 +87,4 @@ Filter.propTypes = {
   handleSortDirection: PropTypes.func,
   currentSort: PropTypes.string,
   currentSortDirection: PropTypes.string
-}
+};

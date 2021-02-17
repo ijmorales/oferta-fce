@@ -22,14 +22,16 @@ export default function SearchBar({ handleSearch }) {
       <div className="h-10 flex flex-grow">
         <div
           id="iconBox"
-          className="flex bg-war-blue border border-war-blue rounded-l-full">
+          className="flex bg-war-blue border border-war-blue rounded-l-full"
+        >
           <div className="p-3 text-white h-full flex justify-center items-center">
             <FaSearch className="h-4 w-4" />
           </div>
         </div>
         <div
           id="inputContainer"
-          className="flex flex-grow border border-war-blue rounded-r-full px-2 overflow-hidden">
+          className="flex flex-grow border border-war-blue rounded-r-full px-2 overflow-hidden"
+        >
           <input
             type="text"
             placeholder="Buscar..."

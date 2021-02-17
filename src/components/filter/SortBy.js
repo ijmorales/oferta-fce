@@ -5,8 +5,8 @@ import {
   FaChevronCircleDown
 } from 'react-icons/fa';
 
+import { HORAS } from '../../hooks/useFilterHorario';
 import Dropdown from '../dropdown/Dropdown';
-import { HORAS } from '../hooks/useFilterHorario';
 
 export const SORT_OPTIONS = [
   {
@@ -70,7 +70,13 @@ export default function SortBy({
   currentSort,
   currentSortDirection
 }) {
+  const [sortObj, setSortObj] = useState({
+    currentSort,
+    currentSortDirection
+  });
+
   const clickHandler = (displayName) => {
+    
     const sortObj = SORT_OPTIONS.find(
       (option) => option.displayName === displayName
     );
@@ -82,7 +88,8 @@ export default function SortBy({
       <Dropdown
         items={SORT_OPTIONS.map((item) => item.displayName)}
         clickHandler={clickHandler}
-        isChecked={(item) => currentSort.displayName === item}>
+        isChecked={(item) => currentSort.displayName === item}
+      >
         <div className="flex items-center">
           <span className="mr-3 flex items-center">
             <p className="mr-2">Ordenar por: {currentSort.displayName}</p>
@@ -93,7 +100,8 @@ export default function SortBy({
       <button
         onClick={() =>
           handleSortDirection(currentSortDirection === 'asc' ? 'desc' : 'asc')
-        }>
+        }
+      >
         {currentSortDirection === 'asc' ? (
           <FaArrowCircleUp />
         ) : (

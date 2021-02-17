@@ -26,26 +26,30 @@ export default function Navbar() {
       </div>
       <button
         className="flex md:hidden p-3.5"
-        onClick={() => setShowMenu(!showMenu)}>
+        onClick={() => setShowMenu(!showMenu)}
+      >
         <FaBars className="h-10 w-10 text-war-blue" />
       </button>
       <CSSTransition
         in={showMenu}
         timeout={150}
         unmountOnExit
-        classNames="menu">
+        classNames="menu"
+      >
         <ul className="w-full" id="mobile-menu">
           <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
             <a
               href="/about"
-              className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">
+              className="group-hover:text-white md:group-hover:text-war-blue block p-3.5"
+            >
               Acerca de
             </a>
           </li>
           <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
             <a
               href="/feedback"
-              className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">
+              className="group-hover:text-white md:group-hover:text-war-blue block p-3.5"
+            >
               Feedback
             </a>
           </li>
@@ -55,14 +59,16 @@ export default function Navbar() {
         <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
           <a
             href="/about"
-            className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">
+            className="group-hover:text-white md:group-hover:text-war-blue block p-3.5"
+          >
             Acerca de
           </a>
         </li>
         <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
           <a
             href="/feedback"
-            className="group-hover:text-white md:group-hover:text-war-blue block p-3.5">
+            className="group-hover:text-white md:group-hover:text-war-blue block p-3.5"
+          >
             Feedback
           </a>
         </li>

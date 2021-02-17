@@ -8,7 +8,8 @@ export default function Layout({ children }) {
       <header className="w-full shadow-lg bg-white flex">
         <div
           className=" flex-grow bg-white container mx-auto"
-          id="navbar-wrapper">
+          id="navbar-wrapper"
+        >
           <Navbar />
         </div>
       </header>

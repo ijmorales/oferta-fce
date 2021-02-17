@@ -16,10 +16,12 @@ const Sidebar = ({ sidebarShow, closeSidebar }) => {
           sidebarShow
             ? 'bg-gray-700 w-screen h-full fixed text-white flex flex-col lg:w-44 lg:relative lg:h-auto justify-between'
             : 'hidden'
-        }>
+        }
+      >
         <div
           id="closeSidebar-button"
-          className="lg:hidden flex justify-end h-20">
+          className="lg:hidden flex justify-end h-20"
+        >
           <button onClick={closeSidebar} className="p-4">
             <HiOutlineX className="w-10 h-10" />
           </button>

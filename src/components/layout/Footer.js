@@ -8,7 +8,8 @@ const Footer = () => {
         href="https://github.com/ijmorales/oferta-fce"
         className="flex justify-center align-middle p-4"
         rel="noreferrer"
-        target="_blank">
+        target="_blank"
+      >
         <span className="mr-4 flex items-center">
           <FaGithub className="h-3 w-3" />
         </span>

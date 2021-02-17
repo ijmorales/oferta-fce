@@ -21,7 +21,8 @@ const PageItem = ({ pageNumber, current, selectPageHandler }) => (
     onClick={() => selectPageHandler(pageNumber)}
     onKeyDown={() => selectPageHandler(pageNumber)}
     role="button"
-    tabIndex="-1">
+    tabIndex="-1"
+  >
     <p>{pageNumber}</p>
   </div>
 );
@@ -71,7 +72,8 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         onClick={() => selectPageHandler(1)}
         onKeyDown={() => selectPageHandler(1)}
         role="button"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         <div className="flex flex-col justify-center  h-full">
           <FaAngleDoubleLeft className="text-xl" />
         </div>
@@ -81,7 +83,8 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         onClick={() => selectPageHandler(currentPage - 1)}
         onKeyDown={() => selectPageHandler(currentPage - 1)}
         role="button"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         <div className="flex flex-col justify-center h-full">
           <FaAngleLeft className="text-xl" />
         </div>
@@ -94,7 +97,8 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         onClick={() => selectPageHandler(currentPage + 1)}
         onKeyDown={() => selectPageHandler(currentPage + 1)}
         role="button"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         <div className="flex flex-col justify-center h-full">
           <FaAngleRight className="text-xl" />
         </div>
@@ -104,7 +108,8 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         onClick={() => selectPageHandler(totalPages)}
         onKeyDown={() => selectPageHandler(totalPages)}
         role="button"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         <div className="flex flex-col justify-center h-full">
           <FaAngleDoubleRight className="text-xl" />
         </div>

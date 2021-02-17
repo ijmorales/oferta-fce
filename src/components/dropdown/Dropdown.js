@@ -19,7 +19,8 @@ export default function Dropdown({
         onClick={() => setOpen(!open)}
         onKeyDown={() => setOpen(!open)}
         role="button"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         {children}
       </div>
 
@@ -28,17 +29,20 @@ export default function Dropdown({
           'flex flex-col',
           'shadow-md bg-war-blue text-white absolute',
           open ? 'flex' : 'hidden'
-        )}>
+        )}
+      >
         {items.map((item, idx) => (
           <li
             className={classnames(
               'py-2 px-3 hover:bg-strong-gray cursor-pointer',
               itemsStyles
             )}
-            key={idx}>
+            key={idx}
+          >
             <button
               onClick={() => clickHandler(item)}
-              onKeyDown={() => clickHandler(item)}>
+              onKeyDown={() => clickHandler(item)}
+            >
               <DropdownItem
                 title={item}
                 checkable
