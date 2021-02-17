@@ -11,9 +11,11 @@ module.exports = {
       '/': { page: '/' },
       '/about': { page: '/about' },
       '/oferta': { page: '/oferta' }
-    }
+    };
     data.forEach((curso) => {
-      paths[`/oferta/${curso.id}`] = { page: '/oferta/[id]' }
+      if (curso.docente || curso.titular) {
+        paths[`/oferta/${curso.id}`] = { page: '/oferta/[id]' }
+      }
     })
     return paths
   }

@@ -3,11 +3,11 @@ import chunk from 'lodash/chunk';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-import CursoGrid from '../../components/cursos/CursoGrid';
-import Filter from '../../components/filter/Filter';
-import { SORT_OPTIONS } from '../../components/filter/SortBy';
-import Layout from '../../components/layout/Layout';
-import Paginator from '../../components/pagination/Paginator';
+import CursoGrid from '../../src/components/cursos/CursoGrid';
+import Filter from '../../src/components/filter/Filter';
+import { SORT_OPTIONS } from '../../src/components/filter/SortBy';
+import Layout from '../../src/components/layout/Layout';
+import Paginator from '../../src/components/pagination/Paginator';
 
 export default function Oferta({ oferta }) {
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -34,23 +34,33 @@ export default function Oferta({ oferta }) {
     setCurrentPage(1);
   }
 
-  useEffect(() => {
+  function sortCursos(sortFn) {
     const reducedCursos = cursos.reduce((acc, page) => acc.concat(page), []);
-    const sortedCursos = reducedCursos.sort(
-      currentSort.sortFn(currentSortDirection)
+    const sortedCursos = reducedCursos.sort(sortFn);
+    return sortedCursos;
+  }
+
+  function handleSort(sortObj) {
+    setCurrentSort(sortObj);
+    setCursos(
+      chunk(sortCursos(sortObj.sortFn(currentSortDirection)), itemsPerPage)
     );
-    setCursos(chunk(sortedCursos, itemsPerPage));
-  }, [currentSort, currentSortDirection]);
+  }
+
+  function handleSortDirection(sortDirection) {
+    setCurrentSortDirection(sortDirection);
+    setCursos(
+      chunk(sortCursos(currentSort.sortFn(sortDirection)), itemsPerPage)
+    );
+  }
 
   return (
     <Layout>
       <div className="mt-5 order-1 h-full">
         <Filter
           handleFilter={handleFilter}
-          handleSort={(sortObj) => setCurrentSort(sortObj)}
-          handleSortDirection={(sortDirection) =>
-            setCurrentSortDirection(sortDirection)
-          }
+          handleSort={handleSort}
+          handleSortDirection={handleSortDirection}
           currentSort={currentSort}
           currentSortDirection={currentSortDirection}
         />
@@ -79,6 +89,7 @@ export async function getStaticProps(context) {
     }
     return curso;
   });
+  oferta = oferta.filter((curso) => curso.docente)
   return {
     props: {
       oferta: oferta

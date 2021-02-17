@@ -38,29 +38,6 @@ export const SORT_OPTIONS = [
         };
       }
     }
-  },
-  {
-    displayName: 'Horario',
-    sortFn: function (direction) {
-      function compareHorarios(a, b) {
-        const horarioA = a.horario !== null ? a.horario[0].hora : null;
-        const horarioB = b.horario !== null ? b.horario[0].hora : null;
-
-        if (horarioA === null) {
-          return 1;
-        }
-
-        if (horarioB === null) {
-          return -1;
-        }
-        return HORAS.indexOf(horarioA) > HORAS.indexOf(horarioB);
-      }
-      if (direction === 'asc') {
-        return (a, b) => (compareHorarios(a, b) ? 1 : -1);
-      } else {
-        return (a, b) => (compareHorarios(a, b) ? -1 : 1);
-      }
-    }
   }
 ];
 
@@ -70,13 +47,7 @@ export default function SortBy({
   currentSort,
   currentSortDirection
 }) {
-  const [sortObj, setSortObj] = useState({
-    currentSort,
-    currentSortDirection
-  });
-
   const clickHandler = (displayName) => {
-    
     const sortObj = SORT_OPTIONS.find(
       (option) => option.displayName === displayName
     );
