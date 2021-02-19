@@ -66,7 +66,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
   const pages = getPages();
 
   return (
-    <Card className="xl:inline-flex  flex text-war-blue flex-grow px-2">
+    <Card className="xl:inline-flex  flex text-war-blue px-2">
       <div
         className="page-item flex flex-col justify-center mr-1"
         onClick={() => selectPageHandler(1)}
@@ -74,7 +74,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         role="button"
         tabIndex="-1"
       >
-        <div className="flex flex-col justify-center  h-full">
+        <div className="flex flex-col justify-center h-full px-2">
           <FaAngleDoubleLeft className="text-xl" />
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         role="button"
         tabIndex="-1"
       >
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-full px-2">
           <FaAngleLeft className="text-xl" />
         </div>
       </div>
@@ -99,7 +99,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         role="button"
         tabIndex="-1"
       >
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-full px-2">
           <FaAngleRight className="text-xl" />
         </div>
       </div>
@@ -110,7 +110,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         role="button"
         tabIndex="-1"
       >
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-full px-2">
           <FaAngleDoubleRight className="text-xl" />
         </div>
       </div>
