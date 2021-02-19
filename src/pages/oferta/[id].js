@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { FaSadTear } from 'react-icons/fa';
 
-import Opinion from '../../src/components/cursos/Opinion';
-import Layout from '../../src/components/layout/Layout';
+import Opinion from '../../components/cursos/Opinion';
+import Layout from '../../components/layout/Layout';
 export default function Curso({ curso }) {
   if (curso == null) {
     return <div>Page not found</div>;

@@ -1,13 +1,14 @@
 import fs from 'fs';
 import chunk from 'lodash/chunk';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-import CursoGrid from '../../src/components/cursos/CursoGrid';
-import Filter from '../../src/components/filter/Filter';
-import { SORT_OPTIONS } from '../../src/components/filter/SortBy';
-import Layout from '../../src/components/layout/Layout';
-import Paginator from '../../src/components/pagination/Paginator';
+import CursoGrid from '../../components/cursos/CursoGrid';
+import Filter from '../../components/filter/Filter';
+import { SORT_OPTIONS } from '../../components/filter/SortBy';
+import Layout from '../../components/layout/Layout';
+import Paginator from '../../components/pagination/Paginator';
 
 export default function Oferta({ oferta }) {
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -55,29 +56,38 @@ export default function Oferta({ oferta }) {
   }
 
   return (
-    <Layout>
-      <div className="mt-5 order-1 h-full">
-        <Filter
-          handleFilter={handleFilter}
-          handleSort={handleSort}
-          handleSortDirection={handleSortDirection}
-          currentSort={currentSort}
-          currentSortDirection={currentSortDirection}
+    <div>
+      <Head>
+        <title>Oferta calificada</title>
+        <meta
+          name="description"
+          content="Oferta calificada de la Facultad de Ciencias Economicas (FCE), por Ignacio Morales"
         />
-      </div>
-      {cursos && cursos.length > 1 ? (
-        <div className="mt-5 flex order-3 xl:self-end xl:order-2 justify-center md:justify-end">
-          <Paginator
-            currentPage={currentPage}
-            totalPages={cursos.length}
-            selectPage={(pageNumber) => setCurrentPage(pageNumber)}
+      </Head>
+      <Layout>
+        <div className="mt-5 order-1 h-full">
+          <Filter
+            handleFilter={handleFilter}
+            handleSort={handleSort}
+            handleSortDirection={handleSortDirection}
+            currentSort={currentSort}
+            currentSortDirection={currentSortDirection}
           />
         </div>
-      ) : null}
-      <div className="mt-5 xl:order-3 order-2">
-        <CursoGrid cursos={cursos[currentPage - 1]} />
-      </div>
-    </Layout>
+        {cursos && cursos.length > 1 ? (
+          <div className="mt-5 flex order-3 xl:self-end xl:order-2 justify-center md:justify-end">
+            <Paginator
+              currentPage={currentPage}
+              totalPages={cursos.length}
+              selectPage={(pageNumber) => setCurrentPage(pageNumber)}
+            />
+          </div>
+        ) : null}
+        <div className="mt-5 xl:order-3 order-2">
+          <CursoGrid cursos={cursos[currentPage - 1]} />
+        </div>
+      </Layout>
+    </div>
   );
 }
 
@@ -89,7 +99,7 @@ export async function getStaticProps(context) {
     }
     return curso;
   });
-  oferta = oferta.filter((curso) => curso.docente)
+  oferta = oferta.filter((curso) => curso.docente);
   return {
     props: {
       oferta: oferta

@@ -35,6 +35,3 @@ yarn-error.log*
 
 # VSCODE
 .vscode/
-
-# Data privada, se puede bajar usando el script de Python si tenes usuario en el CECE
-data/
