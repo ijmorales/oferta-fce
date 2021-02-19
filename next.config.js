@@ -18,5 +18,14 @@ module.exports = {
       }
     })
     return paths
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/oferta',
+        permanent: true
+      }
+    ];
   }
 };
