@@ -74,7 +74,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         role="button"
         tabIndex="-1"
       >
-        <div className="flex flex-col justify-center h-full px-2">
+        <div className="sm:flex flex-col justify-center h-full px-2 hidden">
           <FaAngleDoubleLeft className="text-xl" />
         </div>
       </div>
@@ -110,7 +110,7 @@ export default function Paginator({ totalPages, currentPage, selectPage }) {
         role="button"
         tabIndex="-1"
       >
-        <div className="flex flex-col justify-center h-full px-2">
+        <div className="sm:flex flex-col justify-center h-full px-2 hidden">
           <FaAngleDoubleRight className="text-xl" />
         </div>
       </div>

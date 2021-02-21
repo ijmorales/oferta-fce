@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs');
+const { redirect } = require('next/dist/next-server/server/api-utils');
 const path = require('path')
 
 module.exports = {
@@ -9,7 +10,6 @@ module.exports = {
     const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/oferta.example.json'), 'utf-8'))
     const paths = {
       '/': { page: '/' },
-      '/about': { page: '/about' },
       '/oferta': { page: '/oferta' }
     };
     data.forEach((curso) => {
@@ -18,5 +18,14 @@ module.exports = {
       }
     })
     return paths
-  }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/oferta',
+        permanent: true
+      },
+    ]
+  },
 };
