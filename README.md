@@ -1,30 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Alternative view of the courses available for students of the FCE-UBA. Features include searching, filtering, pagination and comments.
 
-## Getting Started
+## About
+Bootstrapped in NextJS and fully designed my myself, including color palettes, logos and so. Tailwind has been used for the styling.
+This project is intented to be build from the data at the data folder and served through a static CDN, at a cost of roughly $0.
 
-First, run the development server:
+## Data
+The data has been scrapped from the web, although the courses showing in the live preview are fake. The scrapper script is available for students with proper credentials at [FCE Scrapper](https://github.com/ijmorales/fce-scrap/)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If curious about this app, you can check the live demo at [Live Preview]()
