@@ -58,16 +58,20 @@ export default function Navbar() {
       <ul className="hidden md:flex" id="mobile-menu">
         <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
           <a
-            href="/about"
+            href="https://github.com/ijmorales/oferta-fce"
             className="group-hover:text-white md:group-hover:text-war-blue block p-3.5"
+            rel="noreferrer"
+            target="_blank"
           >
             Acerca de
           </a>
         </li>
         <li className="font-bold block group hover:bg-war-blue md:hover:bg-white">
           <a
-            href="/feedback"
+            href="https://github.com/ijmorales/oferta-fce/issues"
             className="group-hover:text-white md:group-hover:text-war-blue block p-3.5"
+            rel="noreferrer"
+            target="_blank"
           >
             Feedback
           </a>
