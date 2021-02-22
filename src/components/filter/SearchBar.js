@@ -8,8 +8,8 @@ export default function SearchBar({ handleSearch }) {
   };
 
   const searchFn = (curso, index) =>
-    curso.materia.toLowerCase().includes(searchValue) ||
-    curso.docente.toLowerCase().includes(searchValue);
+    curso.materia.toLowerCase().includes(searchValue.toLowerCase()) ||
+    curso.docente.toLowerCase().includes(searchValue.toLowerCase());
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
